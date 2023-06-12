@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cinema Seat Reservation</title>
+</head>
+<body>
+    <div id="title-01" class="title-box">
+        <h1 id="title-02" class="title-text">World-Planet Cineplex</h1>
+    </div>
+
+    <div id="movie-preview" class="movie-preview">
+        <div id="poster" class="poster"></div>
+        <div id="synopsis" class="synopsis"></div>
+    </div>
+
+    <div class="movie-container">
+        <label>Which movie would you like to see?</label>
+        <select id="movie">
+            <option value="10">Neverending Story - The End</option>
+            <option value="12">Bladelurcher</option>
+            <option value="14">Scifi</option>
+            <option value="16">James Bond - Pyrite Finger</option>
+        </select>
+    </div>
+
+    <ul class="showcase">
+        <li>
+            <div class="seat"></div>
+            <small>N/A</small>
+        </li>
+        <li>
+            <div class="seat selected"></div>
+            <small>Selected</small>
+        </li>
+        <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+        </li>
+    </ul>
+
+    <div id="buttons">
+        <button id="small">small</button>
+        <button id="medium">medium</button>
+        <button id="large">large</button>
+        <button id="colosseum" class="colosseum">colloseum</button>
+    </div>
+
+    <div class="container">
+        <div class="screen"></div>
+    </div>
+
+    <p class="text">You have selected <span id="count">0</span> seats for the price of $ <span id="total">0</span>.</p>
+    
+    
+    <script src="movies.js"></script>
+    <script src="interaction.js"></script>
+</body>
+</html>
