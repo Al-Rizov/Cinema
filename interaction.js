@@ -16,14 +16,15 @@ const moviesList = [Fantasymovie, Bladelurcher, Scifi, Spymovie];
 const poster = document.getElementById("poster");
 const synopsis = document.getElementById("synopsis");
 
-
 let ticketPrice = parseInt(movieSelect.value);
 
-/*
 
-5. Add posters for the movies.
-
-*/
+(function(){
+        let image = document.createElement('img')
+        synopsis.innerHTML = moviesList[0].synopsis;
+        poster.appendChild(image);
+        image.src = moviesList[0].poster;
+})();
 
 function wipeSlateClean(){
     container.innerHTML = '';
@@ -43,6 +44,61 @@ function updateSelectedCount() {
     count.innerText = selectedSeatsCount;
     total.innerText = selectedSeatsCount*ticketPrice;
 }
+
+function buildRoom(position, rows, seats, seat_arrangement, row_arrangement) {
+    
+
+    if(position !== westWing && position !== eastWing && position !== colosseumBody){
+        wipeSlateClean();
+        let screen = document.createElement('div');
+        container.appendChild(screen);
+        screen.classList.add('screen');
+    }
+
+    for(i=0; i<rows; i++){
+        const row = document.createElement('div');
+        position.appendChild(row);
+        row.classList.add('row', row_arrangement)
+
+            for(j=0; j<seats; j++){
+                const seat = document.createElement('div');
+                seat.innerText= String.fromCharCode(65+i) + (j+1);
+                row.appendChild(seat);
+                seat.classList.add('seat', seat_arrangement)
+                
+            }
+    }
+    
+}
+
+function buildColloseum(){
+    wipeSlateClean();
+    
+    let screen = document.createElement('div');
+    let frame = document.createElement('div');
+    
+    container.appendChild(screen);
+    container.appendChild(frame);
+    screen.classList.add('screen');
+    frame.classList.add('frame');
+
+   
+    frame.appendChild(westWing);
+    westWing.classList.add('west')
+    buildRoom(westWing,26,10, undefined, 'col_row')
+
+    frame.appendChild(colosseumBody);
+    colosseumBody.classList.add('colosseumBody');
+    buildRoom(colosseumBody, 26, 20, undefined,'col_row');
+
+    frame.appendChild(eastWing);
+    eastWing.classList.add('east');
+    buildRoom(eastWing,26,10, undefined, 'col_row');
+
+    
+}
+
+
 
 movieSelect.addEventListener('change', ev => {
     ticketPrice = +ev.target.value;
@@ -80,11 +136,6 @@ movieSelect.addEventListener('change', ev => {
 
     updateSelectedCount();
 });
-
-
-box.addEventListener("mouseover", changeClass);
-box.addEventListener("mouseout", changeClass);
-
 container.addEventListener("click", function(ev) {
     if (ev.target.classList.contains("seat") &&
     !ev.target.classList.contains("occupied")) {
@@ -93,62 +144,9 @@ container.addEventListener("click", function(ev) {
         updateSelectedCount();
     }
 })
-
-
-function buildRoom(position, rows, seats, seat_arrangement, row_arrangement) {
-    
-
-    if(position !== westWing && position !== eastWing && position !== colosseumBody){
-        wipeSlateClean();
-        let screen = document.createElement('div');
-        container.appendChild(screen);
-        screen.classList.add('screen');
-    }
-
-    for(i=0; i<rows; i++){
-        const row = document.createElement('div');
-        position.appendChild(row);
-        row.classList.add('row', row_arrangement)
-
-            for(j=0; j<seats; j++){
-                const seat = document.createElement('div');
-                seat.innerText= String.fromCharCode(65+i) + '-' + (j+1);
-                row.appendChild(seat);
-                seat.classList.add('seat', seat_arrangement)
-                
-            }
-    }
-    
-}
-
-function buildColloseum(){
-    wipeSlateClean();
-    
-    let screen = document.createElement('div');
-    let frame = document.createElement('div');
-    
-    container.appendChild(screen);
-    container.appendChild(frame);
-    screen.classList.add('screen');
-    frame.classList.add('frame');
-
-   
-    frame.appendChild(westWing);
-    westWing.classList.add('west')
-    buildRoom(westWing,26,10, undefined, 'col_row')
-
-    frame.appendChild(colosseumBody);
-    colosseumBody.classList.add('colosseumBody');
-    buildRoom(colosseumBody, 26, 20, undefined,'col_row');
-
-    frame.appendChild(eastWing);
-    eastWing.classList.add('east');
-    buildRoom(eastWing,26,10, undefined, 'col_row');
-
-    
-}
-
-smallBtn.addEventListener('click', ()=>buildRoom(container,11,10))
+box.addEventListener("mouseover", changeClass);
+box.addEventListener("mouseout", changeClass);
+smallBtn.addEventListener('click', ()=>buildRoom(container,11,10));
 mediumBtn.addEventListener('click', ()=>buildRoom(container,12,20, 'hall_m'));
 largeBtn.addEventListener('click', ()=>buildRoom(container,15,22, 'hall_l', 'row_l'));
-colosseumBtn.addEventListener('click',buildColloseum)
+colosseumBtn.addEventListener('click',buildColloseum);

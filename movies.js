@@ -26,10 +26,10 @@ const Bladelurcher = {
     title:      'Bladelurcher',
     poster:     'posters/BladewalkerOriginal.jpeg',
     synopsis:   'The Megacity of New America (property of THEY-Inc.) is the last place on the planet, where you can \
-                anything at all. Citizenship is as desired as it is limited and entrance is \
+                get an acceptable life. Citizenship is as desired as it is limited and entrance is \
                 highly restricted. This has created a fertile ground for a few business \
                 ventures such as ---Redacted by THEY-Inc.--- to engage in ruthless social engineering \
-                experiments, that are archaically called "unethical".  Still, \
+                experiments, that are archaically called "unethical".  Despite that, \
                 access to New America is desired and a lone agent is eking out an existence as a \
                 people smuggler. He is one day hired for an unconventional \
                 task: Someone wants to LEAVE New America! ---THEY-Inc. would like to remind everyone \
@@ -40,7 +40,7 @@ const Scifi = {
     title:      'SciFi',
     poster:     'posters/SciFiOriginal.jpg',
     synopsis:   '"There\'s GOLD in them there hills, son!" is what people used to say in the old world, \
-                before omni-synthesizers and teleportation discs made resource based economy obsolete. \
+                before omni-synthesizers and teleports made the resource based economy obsolete. \
                 After the initial chaos, there was even more chaos as the world was desperately trying to \
                 shake off its old habits. Now, a worrying discovery is made. A new Element \
                 has been found in a nearby solar system, one that cannot be replicated by the omnis, and those \
